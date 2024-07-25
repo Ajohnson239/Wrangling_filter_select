@@ -233,6 +233,9 @@ movies_1995 <- movies %>%
 movies_1995
 ```
 
+There was 135 movies released in 1995.
+
+
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
 ```{r}
@@ -244,6 +247,8 @@ movies_1995 <- movies %>%
 movies_1995
 ```
 
+There were no records found for movies with a rating above an 8 with 120 minutes.
+
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
 ```{r}
@@ -252,25 +257,36 @@ movies %>%
 
 ```
 
+The movies that are included in this data are Harry Potter and the Chamber of Secrets,Harry Potter and the Prisoner of Azkaban and Harry Potter and the Sorcerer's Stone. The harry porter movie with the highest rating is Harry Potter and the Prisoner of Azkaban. The movie that has the most votes on  imdb.com is Harry Potter and the Sorcerer's Stone.
+
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
 ```{r}
 movies_1995 <- movies %>%    
   filter(year >= 1995 & Action == 1) %>%
   drop_na(budget) %>%
-  select(Animation, votes, budget, year)
+  select(title,Comedy,Animation, votes, budget, year)
 
 movies_1995
 ```
 
+The highest budget for a movie that is an Animation or Comedy with at least 100 votes is Spider-Man 2 2004.
+
+
+
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
 ```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(title,Comedy,Animation, votes, budget, year)
 
+movies_1995
 ```
 
 
-
+My favorite movie is not in the data set.
 
 
 
