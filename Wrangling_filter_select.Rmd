@@ -38,14 +38,33 @@ dim(movies)     # always rows x columns
 names(movies)   # a good way to keep track of variable names for later use
 ```
 
+```{r}
+mean(movies$rating)
+```
+  The code Block shows us the average movie rating at 5.9.
+  
+```{r}
+newdata<-na.omit(movies$budget) 
+```
+
+
+
+```{r}
+median(newdata)
+```
+ The median budget for the movie is at 3,000,000
+
+```{r}
+median(movies$length)
+```
 
 ## Motivation for Wrangling
 
 Now that we have a sense of our data, we can start to dig a little deeper into the details of things. One of the main reasons data wrangling is so important to statisticians and data scientists is that we often collect waaaay more data than we actually need to answer a particular question. You may want to ask the following questions:
 
-- What is the average movie rating?
+- What is the average movie rating? The average movie rating is at 5.9.
 
-- What is the median budget for a movie?
+- What is the median budget for a movie? The median budget for the movie is at 3,000,000
 
 But after looking at all of the movies recorded here, the more precise questions might turn out to be:
 
@@ -206,25 +225,42 @@ See if you can answer these questions:
 1. How many movies were released in 1995?
 
 ```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(title, rating, budget, year)
 
+movies_1995
 ```
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
 ```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(Comedy,title, rating, length, year)
 
+movies_1995
 ```
 
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
 ```{r}
+movies %>%
+  filter(str_detect(title, "Harry Potter"))
 
 ```
 
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
 ```{r}
+movies_1995 <- movies %>%    
+  filter(year >= 1995 & Action == 1) %>%
+  drop_na(budget) %>%
+  select(Animation, votes, budget, year)
 
+movies_1995
 ```
 
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
